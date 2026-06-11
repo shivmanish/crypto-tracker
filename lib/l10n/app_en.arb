@@ -1,0 +1,56 @@
+{
+  "@@locale": "en",
+  "appTitle": "Crypto Tracker",
+  "marketsTitle": "Markets",
+  "liveLabel": "LIVE / COINGECKO",
+  "marketCapShort": "TOP 20 · 24H",
+  "vol24hShort": "VOL 24H",
+  "trendingLabel": "TRENDING · 24H",
+  "coinsCount": "{count} COINS →",
+  "@coinsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "searchHint": "Search coins",
+  "columnAsset": "ASSET",
+  "columnPrice": "PRICE · 24H",
+  "marketStats": "MARKET STATS",
+  "statMarketCap": "MARKET CAP",
+  "statVolume24h": "VOLUME 24H",
+  "statAllTimeHigh": "ALL-TIME HIGH",
+  "statAllTimeLow": "ALL-TIME LOW",
+  "statCirculatingSupply": "CIRCULATING SUPPLY",
+  "statMaxSupply": "MAX SUPPLY",
+  "uncapped": "∞ uncapped",
+  "aboutCoin": "ABOUT {name}",
+  "@aboutCoin": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "rankLabel": "RANK #{rank}",
+  "@rankLabel": {
+    "placeholders": { "rank": { "type": "int" } }
+  },
+  "retry": "Retry",
+  "errorTitle": "Something went wrong",
+  "offlineBanner": "You're offline — showing cached data",
+  "emptyCoinsTitle": "No coins to show",
+  "offlineTitle": "You're offline",
+  "searchOfflineMessage": "Search needs an internet connection. Reconnect and try again.",
+  "noResultsTitle": "No results",
+  "partialOfflineNote": "Limited data offline — connect for full details",
+  "detailOfflineMessage": "Connect to the internet to view this coin.",
+  "noResults": "No coins match \"{query}\"",
+  "@noResults": {
+    "placeholders": { "query": { "type": "String" } }
+  },
+  "favorite": "Favorite",
+  "favoriteAdded": "Added to favorites",
+  "favoriteRemoved": "Removed from favorites",
+  "rateLimited": "Rate limit hit. Please wait a moment.",
+  "language": "Language",
+  "theme": "Theme",
+  "sourceCoinGecko": "○ SOURCE · COINGECKO",
+  "settings": "Settings",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark"
+}
