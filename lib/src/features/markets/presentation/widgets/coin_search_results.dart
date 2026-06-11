@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../presentation/molecules/status_view.dart';
+import '../../../../shared_widgets/molecules/status_view.dart';
 import '../cubit/coin_search/coin_search_cubit.dart';
 import '../cubit/coin_search/coin_search_state.dart';
 import 'coin_list_tile.dart';
@@ -61,22 +61,20 @@ class CoinSearchResults extends StatelessWidget {
           );
         }
         return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, i) {
-              final coin = results[i];
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SearchResultTile(
-                    coin: coin,
-                    onTap: () => onCoinTap(coin.id),
-                  ),
-                  Divider(height: 1, thickness: 1, color: context.palette.divider),
-                ],
-              );
-            },
-            childCount: results.length,
-          ),
+          delegate: SliverChildBuilderDelegate((context, i) {
+            final coin = results[i];
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SearchResultTile(coin: coin, onTap: () => onCoinTap(coin.id)),
+                Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: context.palette.divider,
+                ),
+              ],
+            );
+          }, childCount: results.length),
         );
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../presentation/atoms/favorite_star_button.dart';
+import '../../../../shared_widgets/atoms/favorite_star_button.dart';
 import '../cubit/favorites/favorites_cubit.dart';
 import '../cubit/favorites/favorites_state.dart';
 

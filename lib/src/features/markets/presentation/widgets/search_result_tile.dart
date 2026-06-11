@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../presentation/atoms/coin_logo.dart';
+import '../../../../shared_widgets/atoms/coin_logo.dart';
 import '../../domain/entities/coin_base_entity.dart';
 import 'coin_favorite_star.dart';
 
@@ -33,14 +33,18 @@ class SearchResultTile extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(coin.name,
-                      style: type.coinName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis),
-                  Text(coin.symbol,
-                      style: type.coinSymbol,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis),
+                  Text(
+                    coin.name,
+                    style: type.coinName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    coin.symbol,
+                    style: type.coinSymbol,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
             ),

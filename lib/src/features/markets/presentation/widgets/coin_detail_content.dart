@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/extensions/num_extensions.dart';
-import '../../../../presentation/atoms/coin_logo.dart';
-import '../../../../presentation/atoms/percent_badge.dart';
+import '../../../../shared_widgets/atoms/coin_logo.dart';
+import '../../../../shared_widgets/atoms/percent_badge.dart';
 import '../../domain/entities/coin_detail_entity.dart';
 import 'detail_stat_card.dart';
 

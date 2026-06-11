@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/extensions/num_extensions.dart';
-import '../../../../presentation/atoms/coin_logo.dart';
-import '../../../../presentation/atoms/percent_badge.dart';
+import '../../../../shared_widgets/atoms/coin_logo.dart';
+import '../../../../shared_widgets/atoms/percent_badge.dart';
 import '../../domain/entities/trending_coin_entity.dart';
 
 /// Single card in the horizontal trending row.
@@ -72,7 +72,10 @@ class TrendingCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: AppDimens.gapSm),
-                PercentBadge(value: coin.priceChangePercentage24h, compact: true),
+                PercentBadge(
+                  value: coin.priceChangePercentage24h,
+                  compact: true,
+                ),
               ],
             ),
           ],

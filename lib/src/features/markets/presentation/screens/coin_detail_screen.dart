@@ -6,9 +6,9 @@ import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/di/injector.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../presentation/atoms/circle_action_button.dart';
-import '../../../../presentation/atoms/pinned_header_delegate.dart';
-import '../../../../presentation/molecules/status_view.dart';
+import '../../../../shared_widgets/atoms/circle_action_button.dart';
+import '../../../../shared_widgets/atoms/pinned_header_delegate.dart';
+import '../../../../shared_widgets/molecules/status_view.dart';
 import '../../domain/entities/coin_detail_entity.dart';
 import '../cubit/coin_detail/coin_detail_cubit.dart';
 import '../cubit/coin_detail/coin_detail_state.dart';
@@ -176,4 +176,3 @@ class _TopBar extends StatelessWidget {
     );
   }
 }
-

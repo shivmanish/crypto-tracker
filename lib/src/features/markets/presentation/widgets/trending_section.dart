@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../presentation/atoms/shimmer_box.dart';
+import '../../../../shared_widgets/atoms/shimmer_box.dart';
 import '../cubit/trending/trending_cubit.dart';
 import '../cubit/trending/trending_state.dart';
 import 'trending_card.dart';
@@ -34,7 +34,10 @@ class TrendingSection extends StatelessWidget {
                   Text(context.translate.trendingLabel, style: type.label),
                   const Spacer(),
                   if (count > 0)
-                    Text(context.translate.coinsCount(count), style: type.label),
+                    Text(
+                      context.translate.coinsCount(count),
+                      style: type.label,
+                    ),
                 ],
               ),
             ),
@@ -128,10 +131,12 @@ class _Message extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Text(text,
-                style: context.typography.coinSymbol,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis),
+            child: Text(
+              text,
+              style: context.typography.coinSymbol,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           TextButton(onPressed: onRetry, child: Text(context.translate.retry)),
         ],

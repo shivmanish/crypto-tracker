@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/extensions/num_extensions.dart';
-import '../../../../presentation/atoms/shimmer_box.dart';
+import '../../../../shared_widgets/atoms/shimmer_box.dart';
 import '../../domain/entities/global_market_entity.dart';
 
 /// The market-cap / 24h-volume summary card at the top of the Markets screen.

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/extensions/num_extensions.dart';
-import '../../../../presentation/atoms/coin_logo.dart';
-import '../../../../presentation/atoms/percent_badge.dart';
-import '../../../../presentation/atoms/shimmer_box.dart';
+import '../../../../shared_widgets/atoms/coin_logo.dart';
+import '../../../../shared_widgets/atoms/percent_badge.dart';
+import '../../../../shared_widgets/atoms/shimmer_box.dart';
 import '../../domain/entities/coin_entity.dart';
 import 'coin_favorite_star.dart';
 
