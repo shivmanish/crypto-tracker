@@ -230,15 +230,3 @@ Planned: a GitHub Actions workflow (`.github/workflows/ci.yml`) that runs
 `flutter analyze` and `flutter test` on every push and pull request.
 
 ---
-
-## Known trade-offs & future work
-
-- **No TTL / stale-while-revalidate.** Because the strategy is network-first,
-  the cache is a pure offline fallback; `updated_at` is stored but not yet used
-  to expire data or show a "last updated" label.
-- **Detail-enriched rows aren't size-capped.** They're tiny and few in practice,
-  but an LRU on opened coins would bound them precisely.
-- **Search is online-only** by design (CoinGecko `/search` has no offline
-  equivalent and returns no price data).
-- **Widget tests** are not included — coverage is logic/state-level; rendering
-  tests would be a natural next addition.
