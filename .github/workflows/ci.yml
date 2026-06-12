@@ -1,10 +1,10 @@
 name: CI
 
 on:
-  # Direct pushes to main, and merges of a PR into main.
+  # Every push to any branch, so feature branches get CI before a PR exists.
   push:
-    branches: [main]
-  # Every push to a branch that has an open PR targeting main.
+  # PRs from forks (same-repo branches are already covered by `push` above;
+  # the job-level `if` below skips the duplicate run for in-repo PRs).
   pull_request:
     branches: [main]
   # Allow running it manually from the Actions tab.
@@ -12,13 +12,18 @@ on:
 
 # Cancel an in-progress run when a newer commit is pushed to the same ref.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   analyze-and-test:
     name: Analyze & Test
     runs-on: ubuntu-latest
+    # Avoid double runs: skip the pull_request event for branches that live in
+    # this repo (those already ran via `push`); only run it for forked PRs.
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name != github.repository
     steps:
       - name: Checkout
         uses: actions/checkout@v4
