@@ -8,8 +8,6 @@ import '../cubit/trending/trending_cubit.dart';
 import '../cubit/trending/trending_state.dart';
 import 'trending_card.dart';
 
-/// "TRENDING · 24H" header + a horizontally scrolling row of trending coins,
-/// with shimmer / error / empty states.
 class TrendingSection extends StatelessWidget {
   const TrendingSection({super.key, this.onCoinTap});
 

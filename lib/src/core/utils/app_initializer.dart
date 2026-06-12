@@ -8,7 +8,6 @@ import '../services/local_storage_service.dart';
 import '../services/shared_preferences_local_storage.dart';
 import '../theme/app_theme_manager.dart';
 
-/// App bootstrap. Called once from main().
 class AppInitializer {
   AppInitializer._();
   static final AppInitializer instance = AppInitializer._();

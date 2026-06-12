@@ -3,8 +3,6 @@ import 'package:equatable/equatable.dart';
 import '../../error/failures.dart';
 import 'paginated_response.dart';
 
-/// Minimal state signals. The item list itself lives on the cubit
-/// (`cubit.objects`); the view reads it directly while rendering.
 sealed class PaginatedListState<T> extends Equatable {
   const PaginatedListState();
 
@@ -19,7 +17,6 @@ final class PaginatedListInitial<T> extends PaginatedListState<T> {
 final class PaginatedListLoading<T> extends PaginatedListState<T> {
   const PaginatedListLoading({required this.isFirstFetch});
 
-  /// true = first page (full-screen loader), false = tail (footer loader).
   final bool isFirstFetch;
 
   @override

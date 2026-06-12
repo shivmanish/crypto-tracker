@@ -9,7 +9,6 @@ import '../../../../shared_widgets/atoms/shimmer_box.dart';
 import '../../domain/entities/coin_entity.dart';
 import 'coin_favorite_star.dart';
 
-/// One row in the markets list: rank · logo · name/symbol·mcap · star · price/%.
 class CoinListTile extends StatelessWidget {
   const CoinListTile({super.key, required this.coin, this.onTap});
 
@@ -63,17 +62,12 @@ class CoinListTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: AppDimens.gapSm),
-              // Pinned to the bottom of the row. IntrinsicHeight gives the row
-              // a definite height so Align can stretch; widthFactor keeps the
-              // box at icon width (so it doesn't grab horizontal space).
               Align(
                 alignment: Alignment.bottomCenter,
                 widthFactor: 1,
                 child: CoinFavoriteStar(coinId: coin.id),
               ),
               const SizedBox(width: AppDimens.gap),
-              // Fixed-width price column keeps the price right edges aligned
-              // across every row.
               SizedBox(
                 width: 96,
                 child: Column(
@@ -102,7 +96,6 @@ class CoinListTile extends StatelessWidget {
   }
 }
 
-/// Shimmer placeholder matching [CoinListTile]'s layout.
 class CoinListTileSkeleton extends StatelessWidget {
   const CoinListTileSkeleton({super.key});
 

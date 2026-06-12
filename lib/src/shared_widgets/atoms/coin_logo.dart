@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import '../../core/extensions/context_extensions.dart';
 import 'shimmer_box.dart';
 
-/// Circular coin logo from a network URL, with a shimmer placeholder and a
-/// lettered fallback when the image is missing or fails to load.
 class CoinLogo extends StatelessWidget {
-  const CoinLogo({super.key, required this.url, this.symbol = '', this.size = 36});
+  const CoinLogo({
+    super.key,
+    required this.url,
+    this.symbol = '',
+    this.size = 36,
+  });
 
   final String url;
   final String symbol;

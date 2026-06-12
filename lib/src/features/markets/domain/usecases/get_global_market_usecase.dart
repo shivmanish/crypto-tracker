@@ -18,7 +18,6 @@ class GetGlobalMarketUseCase
   }
 }
 
-/// Endpoint descriptor for `GET /global`. No params beyond the path.
 class GlobalMarketParams extends APIRouter {
   GlobalMarketParams();
 

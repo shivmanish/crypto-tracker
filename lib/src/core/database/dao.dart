@@ -3,8 +3,6 @@ import 'package:sqflite/sqflite.dart';
 import 'app_database.dart';
 import 'db_mapper.dart';
 
-/// Generic table access. One [Dao] per [DbMapper]; works for any row shape so
-/// features don't hand-write CRUD.
 class Dao<T> {
   Dao(this._db, this._mapper);
 

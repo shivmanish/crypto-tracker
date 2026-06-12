@@ -104,7 +104,6 @@ class _StatsGrid extends StatelessWidget {
 
     return Column(
       children: [
-        // Always available — even from the cached list row (offline).
         _row(
           DetailStatCard(
             label: l.statMarketCap,
@@ -115,7 +114,6 @@ class _StatsGrid extends StatelessWidget {
             value: detail.totalVolume.asCompactUsd,
           ),
         ),
-        // Detail-only stats — present only with full (online) data.
         if (detail.isComplete) ...[
           const SizedBox(height: AppDimens.gap),
           _row(
@@ -159,7 +157,6 @@ class _StatsGrid extends StatelessWidget {
   }
 }
 
-/// Shown under the stats when only the cached list row is available offline.
 class _PartialOfflineNote extends StatelessWidget {
   const _PartialOfflineNote();
 

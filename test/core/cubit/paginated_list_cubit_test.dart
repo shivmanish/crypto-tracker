@@ -45,9 +45,9 @@ void main() {
   test('a fetch while one is in flight is ignored', () async {
     final cubit = _TestCubit(uc);
 
-    unawaited(cubit.fetchPage(page: 1)); // first — now Loading
+    unawaited(cubit.fetchPage(page: 1));
     await Future<void>.value();
-    unawaited(cubit.fetchPage(page: 1)); // second — should be ignored
+    unawaited(cubit.fetchPage(page: 1));
     await Future<void>.value();
 
     expect(calls, hasLength(1), reason: 'only the first fetch hit the use case');
@@ -60,14 +60,13 @@ void main() {
       () async {
     final cubit = _TestCubit(uc);
 
-    unawaited(cubit.fetchPage(page: 1)); // call #0, generation 0
+    unawaited(cubit.fetchPage(page: 1));
     await Future<void>.value();
 
-    final resetFuture = cubit.reset(); // bumps generation, starts call #1
+    final resetFuture = cubit.reset();
     await Future<void>.value();
     expect(calls, hasLength(2));
 
-    // complete the STALE first call last — it must not append
     calls[1].complete(const Right(PaginatedResponse(items: [9])));
     calls[0].complete(const Right(PaginatedResponse(items: [1, 2])));
     await resetFuture;

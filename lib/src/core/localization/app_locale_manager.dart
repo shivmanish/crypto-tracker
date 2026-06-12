@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../services/local_storage_service.dart';
 
-/// Reactive locale source for MaterialApp. Persists via [LocalStorageService].
 class AppLocaleManager with ChangeNotifier {
   AppLocaleManager._();
 
@@ -44,7 +43,6 @@ class AppLocaleManager with ChangeNotifier {
     unawaited(_persist(resolved.languageCode));
   }
 
-  /// Toggles between English and the native locale.
   Locale cycleLocale() {
     if (!_initialized) return _activeLocale;
     final i = _supportedLocales.indexOf(_activeLocale);
@@ -65,7 +63,6 @@ class AppLocaleManager with ChangeNotifier {
     try {
       await _storage?.writeString(_storageKey, code);
     } catch (_) {
-      // best-effort
     }
   }
 }

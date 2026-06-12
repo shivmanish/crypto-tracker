@@ -6,8 +6,6 @@ import '../../../../shared_widgets/atoms/coin_logo.dart';
 import '../../domain/entities/coin_base_entity.dart';
 import 'coin_favorite_star.dart';
 
-/// A `/search` result row: logo · name/symbol · #rank · favorite. No price
-/// (search returns identity only); tapping opens the detail screen.
 class SearchResultTile extends StatelessWidget {
   const SearchResultTile({super.key, required this.coin, this.onTap});
 

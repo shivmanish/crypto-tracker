@@ -41,7 +41,6 @@ class _AppState extends State<App> {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             routerConfig: _router.config(),
             scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
-            // clamp text scaling so accessibility settings don't break layout
             builder: (context, child) {
               final mq = MediaQuery.of(context);
               return MediaQuery(

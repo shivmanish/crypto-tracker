@@ -7,7 +7,7 @@ import '../../helpers/mocks.dart';
 
 void main() {
   late MockLocalStorageService storage;
-  final manager = AppLocaleManager.instance; // fresh per test-file isolate
+  final manager = AppLocaleManager.instance;
 
   setUp(() {
     storage = MockLocalStorageService();
@@ -29,7 +29,7 @@ void main() {
     manager.setLocale(const Locale('en'));
     expect(manager.activeLocale, const Locale('en'));
 
-    manager.setLocale(const Locale('fr')); // unsupported → no change
+    manager.setLocale(const Locale('fr'));
     expect(manager.activeLocale, const Locale('en'));
   });
 

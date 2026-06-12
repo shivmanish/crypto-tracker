@@ -11,6 +11,5 @@ class AppDimens {
   static const double coinLogo = 36;
   static const double trendingCardWidth = 180;
 
-  /// Pixels from the bottom that triggers the next page load.
   static const double loadMoreThreshold = 400;
 }

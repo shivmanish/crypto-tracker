@@ -1,7 +1,6 @@
 import '../../../../core/database/db_mapper.dart';
 import '../models/trending_coin_model.dart';
 
-/// Maps [TrendingCoinModel] to/from the sqflite `trending` table.
 class TrendingDbMapper implements DbMapper<TrendingCoinModel> {
   @override
   String get table => 'trending';

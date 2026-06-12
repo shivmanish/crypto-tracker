@@ -4,11 +4,6 @@ import 'paginated_list_params.dart';
 import 'paginated_list_state.dart';
 import 'paginated_response.dart';
 
-/// Generic forward-only paginated list cubit.
-///
-/// Owns the mutable [objects] list (the view reads it directly) and the
-/// next-page cursor. Subclasses implement only [buildParams]; the configured
-/// [UseCase] returns `PaginatedResponse<T>`.
 abstract class PaginatedListCubit<T, P extends PaginatedListParams>
     extends BaseCubit<PaginatedListState<T>, PaginatedResponse<T>, P> {
   PaginatedListCubit({
@@ -20,16 +15,12 @@ abstract class PaginatedListCubit<T, P extends PaginatedListParams>
   final int pageSize;
   final int initialPage;
 
-  /// Accumulated items. Forward fetches append here.
   final List<T> objects = [];
 
   bool hasMorePages = false;
 
-  /// Bumped on [reset] so a still-in-flight page can't append onto the
-  /// freshly cleared list.
   int _generation = 0;
 
-  /// Build params (page + filters/search) for [page].
   P buildParams(int page);
 
   Future<void> fetchPage({required int page}) async {
@@ -53,8 +44,6 @@ abstract class PaginatedListCubit<T, P extends PaginatedListParams>
     );
   }
 
-  /// Clear everything and refetch from [initialPage] (pull-to-refresh / retry).
-  /// Safe to call mid-load: the in-flight page is discarded.
   Future<void> reset() async {
     _generation++;
     objects.clear();

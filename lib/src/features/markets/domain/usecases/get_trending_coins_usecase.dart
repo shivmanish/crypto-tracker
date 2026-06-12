@@ -20,7 +20,6 @@ class GetTrendingCoinsUseCase
   }
 }
 
-/// Endpoint descriptor for `GET /search/trending`.
 class TrendingParams extends APIRouter {
   TrendingParams();
 

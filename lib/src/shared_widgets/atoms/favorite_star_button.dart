@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../core/extensions/context_extensions.dart';
 
-/// Star toggle for favoriting a coin. Filled (favorite color) when active,
-/// muted outline otherwise. [onTap] is wired by the favorites feature.
 class FavoriteStarButton extends StatelessWidget {
   const FavoriteStarButton({
     super.key,

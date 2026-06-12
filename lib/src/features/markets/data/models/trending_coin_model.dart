@@ -1,8 +1,6 @@
 import '../../../../core/network/codecs.dart';
 import '../../domain/entities/trending_coin_entity.dart';
 
-/// Decodes a single `coins[].item` from `/search/trending` (API) and the
-/// sqflite `trending` row.
 class TrendingCoinModel extends TrendingCoinEntity {
   const TrendingCoinModel({
     required super.id,

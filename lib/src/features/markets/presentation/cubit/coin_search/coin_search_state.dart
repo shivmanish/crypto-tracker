@@ -10,8 +10,6 @@ sealed class CoinSearchState extends Equatable {
   List<Object?> get props => [];
 }
 
-/// No active query (empty or below the min length) — the screen shows the
-/// normal paginated list.
 final class CoinSearchInactive extends CoinSearchState {
   const CoinSearchInactive();
 }

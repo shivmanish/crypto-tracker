@@ -6,7 +6,7 @@ void main() {
   group('NumX', () {
     test('asPrice adapts precision to magnitude', () {
       expect(76764.0.asPrice, r'$76,764.00');
-      expect(0.00000601.asPrice, r'$0.00000601'); // 8 decimals for sub-cent
+      expect(0.00000601.asPrice, r'$0.00000601');
     });
 
     test('asCompactUsd renders compact, upper-cased units', () {

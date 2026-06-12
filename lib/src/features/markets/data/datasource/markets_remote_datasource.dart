@@ -80,7 +80,6 @@ class MarketsRemoteDataSourceImpl implements MarketDataSource {
   }
 }
 
-/// `GET /search?query=` — coin identity matches (no market data).
 class _SearchRoute extends APIRouter {
   _SearchRoute(this.query);
 

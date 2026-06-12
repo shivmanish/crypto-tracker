@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../core/constants/app_dimens.dart';
 import '../../core/extensions/context_extensions.dart';
 
-/// Centered icon + title + message (+ optional retry) for empty / offline /
-/// error states. Reusable across features.
 class StatusView extends StatelessWidget {
   const StatusView({
     super.key,

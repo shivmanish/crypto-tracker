@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Root-level keys so non-widget code can reach navigator/messenger.
 class AppGlobalKeys {
   AppGlobalKeys._();
 

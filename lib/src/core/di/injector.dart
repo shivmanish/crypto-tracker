@@ -25,9 +25,6 @@ part 'usecase_sl.dart';
 
 final sl = GetIt.instance;
 
-/// Composition root. Registrations are grouped by layer (core → datasource →
-/// repository → usecase), not by feature. Cubits are NOT registered here —
-/// screens build them in their own BlocProvider, pulling deps from [sl].
 Future<void> initInjector({required LocalStorageService storage}) async {
   coreSl(sl, storage: storage);
   dataSourcesSl(sl);

@@ -23,7 +23,6 @@ class GetCoinsUseCase
   }
 }
 
-/// Endpoint + pagination descriptor for `GET /coins/markets`.
 class CoinsParams extends PaginatedListParams implements APIRouter {
   const CoinsParams({required super.page, required super.pageSize});
 

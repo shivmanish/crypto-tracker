@@ -72,8 +72,6 @@ class DioApiClient implements ApiClient {
     APIRouter route,
     CancelToken? cancelToken,
   ) async {
-    // base URL resolved per route, so any endpoint can target a different
-    // server later without changing the client.
     _dio.options.baseUrl = route.serverType.baseUrl;
     var attempt = 0;
     while (true) {

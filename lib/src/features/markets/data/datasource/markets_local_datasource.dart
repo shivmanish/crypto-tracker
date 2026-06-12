@@ -17,10 +17,6 @@ import 'coin_db_mapper.dart';
 import 'market_data_source.dart';
 import 'trending_db_mapper.dart';
 
-/// Local cache: KV (shared_preferences) for the single global object + the
-/// favorites id-set; sqflite for the paginated coin list (capped to the top
-/// [_maxCachedCoins]) and the trending snapshot. A coin's full detail is stored
-/// on its own `coins` row (extra columns), filled when opened online.
 class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
   MarketsLocalDataSourceImpl(this._storage, this._db)
       : _coins = Dao<CoinModel>(_db, CoinDbMapper()),
@@ -34,10 +30,7 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
   static const String _globalKey = 'crypto.global_market';
   static const String _favoritesKey = 'crypto.favorite_ids';
 
-  /// Keep only the top-N coins cached (≈ first 5 pages of 20).
   static const int _maxCachedCoins = 100;
-
-  // ---- Global market (KV) ----
 
   @override
   Future<GlobalMarketModel> fetchGlobalMarket(GlobalMarketParams route) async {
@@ -50,8 +43,6 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
   Future<void> cacheGlobalMarket(GlobalMarketModel model) =>
       _storage.write(_globalKey, model, (m) => m.toCacheJson());
 
-  // ---- Trending (sqflite snapshot, insertion order) ----
-
   @override
   Future<List<TrendingCoinModel>> fetchTrending(TrendingParams route) async {
     final cached = await _trending.getAll();
@@ -61,12 +52,9 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
 
   @override
   Future<void> cacheTrending(List<TrendingCoinModel> coins) async {
-    // replace the snapshot; getAll then returns them in insertion order
     await _trending.clear();
     await _trending.upsertAll(coins);
   }
-
-  // ---- Coins (sqflite, paginated by rank) ----
 
   @override
   Future<List<CoinModel>> fetchCoins(CoinsParams route) async {
@@ -87,8 +75,6 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
     final now = DateTime.now().millisecondsSinceEpoch;
     final batch = db.batch();
     for (final c in coins) {
-      // Partial upsert: write only the list columns and DO NOT touch the
-      // detail columns, so a list refresh never wipes a coin's saved detail.
       batch.rawInsert(
         '''
         INSERT INTO coins
@@ -113,15 +99,12 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
       );
     }
     await batch.commit(noResult: true);
-    // Cap the list cache, but never drop a row that holds saved detail.
     await db.delete(
       'coins',
       where: 'market_cap_rank > ? AND has_detail = 0',
       whereArgs: [_maxCachedCoins],
     );
   }
-
-  // ---- Coin detail (stored on the coin's own row) ----
 
   @override
   Future<CoinDetailModel> fetchCoinDetail(CoinDetailParams route) async {
@@ -133,11 +116,9 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
       limit: 1,
     );
     if (rows.isEmpty) {
-      // never listed/loaded → nothing to show offline
       throw NetworkException('Connect to the internet to view this coin.');
     }
     final row = rows.first;
-    // Full detail if this coin was opened online before; else partial.
     if ((row['has_detail'] as int? ?? 0) == 1) {
       return CoinDetailModel.fromDb(row);
     }
@@ -147,7 +128,6 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
   @override
   Future<void> cacheCoinDetail(CoinDetailModel detail) async {
     final db = await _db.database;
-    // Enrich the coin's row with full detail (+ refresh market columns).
     await db.rawInsert(
       '''
       INSERT INTO coins
@@ -186,8 +166,6 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
     );
   }
 
-  // ---- Favorites (KV id set) ----
-
   @override
   Future<Set<String>> getFavoriteIds() async {
     final raw = await _storage.readString(_favoritesKey);
@@ -198,8 +176,6 @@ class MarketsLocalDataSourceImpl implements MarketLocalDataSource {
   @override
   Future<void> saveFavoriteIds(Set<String> ids) =>
       _storage.writeString(_favoritesKey, jsonEncode(ids.toList()));
-
-  // ---- Search (not supported offline) ----
 
   @override
   Future<List<SearchCoinModel>> searchCoins(String query) {

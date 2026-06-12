@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Semantic colors exposed as a [ThemeExtension] — `context.palette.foo`.
 @immutable
 class AppPalette extends ThemeExtension<AppPalette> {
   const AppPalette({

@@ -1,9 +1,6 @@
 import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart';
 
-/// Owns the sqflite handle, schema version, and migrations. Bump [version] and
-/// add a [_migrations] entry to evolve the schema — onCreate replays all
-/// migrations, onUpgrade replays only the new ones.
 class AppDatabase {
   AppDatabase({DatabaseFactory? factory, String? path})
       : _factory = factory ?? databaseFactory,
@@ -13,7 +10,6 @@ class AppDatabase {
   static const String dbName = 'crypto_tracker.db';
   static const int version = 1;
 
-  /// Migration N is the set of statements that move the schema *to* version N.
   static const Map<int, List<String>> _migrations = {
     1: [
       '''

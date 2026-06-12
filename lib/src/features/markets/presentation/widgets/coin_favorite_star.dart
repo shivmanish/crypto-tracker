@@ -5,8 +5,6 @@ import '../../../../shared_widgets/atoms/favorite_star_button.dart';
 import '../cubit/favorites/favorites_cubit.dart';
 import '../cubit/favorites/favorites_state.dart';
 
-/// Favorite star bound to the app-level [FavoritesCubit]. Rebuilds only when
-/// this coin's favorite state changes. Reused by the list and search rows.
 class CoinFavoriteStar extends StatelessWidget {
   const CoinFavoriteStar({super.key, required this.coinId});
 

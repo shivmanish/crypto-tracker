@@ -2,8 +2,6 @@ import '../../../../core/network/codecs.dart';
 import '../../domain/entities/coin_detail_entity.dart';
 import 'coin_model.dart';
 
-/// Decodes `/coins/{id}` (market_data is nested per-currency). Also builds a
-/// partial detail from a cached list row for offline viewing.
 class CoinDetailModel extends CoinDetailEntity {
   const CoinDetailModel({
     required super.id,
@@ -25,8 +23,6 @@ class CoinDetailModel extends CoinDetailEntity {
     super.isComplete,
   });
 
-  /// Full detail read back from an enriched `coins` row (set when opened
-  /// online). `has_detail = 1` guarantees the detail columns are present.
   factory CoinDetailModel.fromDb(Map<String, Object?> row) => CoinDetailModel(
         id: row['id'] as String,
         symbol: row['symbol'] as String,
@@ -46,7 +42,6 @@ class CoinDetailModel extends CoinDetailEntity {
         maxSupply: (row['max_supply'] as num?)?.toDouble(),
       );
 
-  /// Offline fallback — only the fields the cached list row carries are known.
   factory CoinDetailModel.partialFromCoin(CoinModel coin) => CoinDetailModel(
         id: coin.id,
         symbol: coin.symbol,
@@ -93,8 +88,6 @@ class CoinDetailModel extends CoinDetailEntity {
     );
   }
 
-  /// Reads the `usd` entry from a per-currency map (or the value itself if the
-  /// field is already a scalar).
   static double _usd(JsonMap market, String key) {
     final value = market[key];
     if (value is Map) return _toDouble(value['usd']);

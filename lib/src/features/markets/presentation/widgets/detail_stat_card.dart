@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimens.dart';
 import '../../../../core/extensions/context_extensions.dart';
 
-/// One stat tile in the detail screen's "MARKET STATS" grid: a muted label, a
-/// value, and an optional colored sub-line (e.g. ATH/ATL change %).
 class DetailStatCard extends StatelessWidget {
   const DetailStatCard({
     super.key,

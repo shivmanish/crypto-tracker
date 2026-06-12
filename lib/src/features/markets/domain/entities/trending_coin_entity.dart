@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-/// A coin from the trending list (horizontal row on the Markets screen).
 class TrendingCoinEntity extends Equatable {
   const TrendingCoinEntity({
     required this.id,

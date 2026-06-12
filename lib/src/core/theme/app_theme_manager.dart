@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../services/local_storage_service.dart';
 
-/// Persisted ThemeMode source for MaterialApp. Defaults to system (assignment
-/// requires system-detected theme).
 class AppThemeManager with ChangeNotifier {
   AppThemeManager._();
 
@@ -38,7 +36,6 @@ class AppThemeManager with ChangeNotifier {
     unawaited(_persist(mode));
   }
 
-  /// Cycles system → light → dark.
   ThemeMode cycle() {
     const order = [ThemeMode.system, ThemeMode.light, ThemeMode.dark];
     final next = order[(order.indexOf(_activeMode) + 1) % order.length];
@@ -50,7 +47,6 @@ class AppThemeManager with ChangeNotifier {
     try {
       await _storage?.writeString(_storageKey, mode.name);
     } catch (_) {
-      // best-effort
     }
   }
 

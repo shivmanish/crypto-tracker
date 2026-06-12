@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  /// A client whose every request is rejected with the given DioException.
   DioApiClient failingWith(DioExceptionType type, {int? status}) {
     final dio = Dio();
     dio.interceptors.add(

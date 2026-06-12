@@ -1,6 +1,5 @@
 import '../network/codecs.dart';
 
-/// Key-value local storage. Backed by shared_preferences.
 abstract class LocalStorageService {
   Future<String?> readString(String key);
   Future<void> writeString(String key, String value);

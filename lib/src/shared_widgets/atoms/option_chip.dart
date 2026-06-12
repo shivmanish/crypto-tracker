@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../core/constants/app_durations.dart';
 import '../../core/extensions/context_extensions.dart';
 
-/// Selectable pill used for single-choice settings (theme mode, language).
 class OptionChip extends StatelessWidget {
   const OptionChip({
     super.key,

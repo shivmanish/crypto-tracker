@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-/// Comprehensive coin info shown on the detail screen.
 class CoinDetailEntity extends Equatable {
   const CoinDetailEntity({
     required this.id,
@@ -39,11 +38,8 @@ class CoinDetailEntity extends Equatable {
   final double atlChangePercentage;
   final double circulatingSupply;
 
-  /// Null when the coin has no hard cap (rendered as "∞ uncapped").
   final double? maxSupply;
 
-  /// false = a partial detail built from the cached list row (offline) — only
-  /// price/market-cap/volume are known; ath/atl/supply/description are absent.
   final bool isComplete;
 
   bool get isUncapped => maxSupply == null;

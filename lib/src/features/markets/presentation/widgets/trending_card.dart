@@ -7,7 +7,6 @@ import '../../../../shared_widgets/atoms/coin_logo.dart';
 import '../../../../shared_widgets/atoms/percent_badge.dart';
 import '../../domain/entities/trending_coin_entity.dart';
 
-/// Single card in the horizontal trending row.
 class TrendingCard extends StatelessWidget {
   const TrendingCard({super.key, required this.coin, this.onTap});
 

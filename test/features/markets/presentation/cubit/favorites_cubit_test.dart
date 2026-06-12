@@ -59,8 +59,8 @@ void main() {
     },
     act: (c) => c.toggle('btc'),
     expect: () => [
-      const FavoritesState(ids: {'btc'}), // optimistic add
-      const FavoritesState(ids: {}, error: CacheFailure('disk full')), // revert
+      const FavoritesState(ids: {'btc'}),
+      const FavoritesState(ids: {}, error: CacheFailure('disk full')),
     ],
   );
 }

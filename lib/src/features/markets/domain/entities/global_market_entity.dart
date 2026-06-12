@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-/// Global market snapshot shown in the Markets header card.
 class GlobalMarketEntity extends Equatable {
   const GlobalMarketEntity({
     required this.totalMarketCapUsd,

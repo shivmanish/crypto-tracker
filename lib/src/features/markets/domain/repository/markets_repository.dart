@@ -26,7 +26,6 @@ abstract class MarketsRepository {
     CoinsParams params,
   );
 
-  /// Free-text search (online only — surfaces a NetworkFailure when offline).
   Future<Either<Failure, List<CoinBaseEntity>>> searchCoins(
     SearchCoinsParams params,
   );
@@ -35,7 +34,6 @@ abstract class MarketsRepository {
     CoinDetailParams params,
   );
 
-  // Favorites (locally persisted).
   Future<Either<Failure, Set<String>>> getFavoriteIds();
 
   Future<Either<Failure, void>> saveFavoriteIds(Set<String> ids);

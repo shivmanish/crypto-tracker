@@ -18,7 +18,6 @@ class NetworkException implements Exception {
   String toString() => 'NetworkException($message)';
 }
 
-/// CoinGecko free tier returns 429 when the rate limit is hit.
 class RateLimitException implements Exception {
   RateLimitException([this.message = 'Rate limit exceeded. Try again shortly.']);
   final String message;

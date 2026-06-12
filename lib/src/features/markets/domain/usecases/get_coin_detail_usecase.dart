@@ -19,7 +19,6 @@ class GetCoinDetailUseCase
   }
 }
 
-/// Endpoint descriptor for `GET /coins/{id}` with market data.
 class CoinDetailParams extends APIRouter {
   CoinDetailParams(this.coinId);
 

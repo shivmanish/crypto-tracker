@@ -7,7 +7,7 @@ import '../../helpers/mocks.dart';
 
 void main() {
   late MockLocalStorageService storage;
-  final manager = AppThemeManager.instance; // fresh per test-file isolate
+  final manager = AppThemeManager.instance;
 
   setUp(() {
     storage = MockLocalStorageService();
@@ -24,9 +24,8 @@ void main() {
 
     await manager.initialize(storage);
     expect(manager.isInitialized, isTrue);
-    expect(manager.activeMode, ThemeMode.dark); // decoded from storage
+    expect(manager.activeMode, ThemeMode.dark);
 
-    // cycle order is system → light → dark → system
     expect(manager.cycle(), ThemeMode.system);
     expect(manager.cycle(), ThemeMode.light);
     expect(manager.cycle(), ThemeMode.dark);
@@ -36,8 +35,7 @@ void main() {
 
   test('initialize is idempotent (second call is a no-op)', () async {
     when(() => storage.readString(any())).thenAnswer((_) async => 'light');
-    await manager.initialize(storage); // already initialized above
-    // mode is whatever the previous test left it; not re-read from storage
+    await manager.initialize(storage);
     verifyNever(() => storage.readString(any()));
   });
 

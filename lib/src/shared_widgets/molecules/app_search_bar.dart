@@ -6,9 +6,6 @@ import '../../core/constants/app_dimens.dart';
 import '../../core/constants/app_durations.dart';
 import '../../core/extensions/context_extensions.dart';
 
-/// Reusable, debounced search input — independent of any feature. Wire
-/// [onChanged] (debounced) / [onSubmitted] to a cubit wherever it's used.
-/// Works uncontrolled or controlled (pass a [controller]).
 class AppSearchBar extends StatefulWidget {
   const AppSearchBar({
     super.key,

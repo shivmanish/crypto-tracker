@@ -6,8 +6,6 @@ import '../../core/theme/app_theme_manager.dart';
 import '../atoms/circle_action_button.dart';
 import '../atoms/option_chip.dart';
 
-/// "⋯" app-bar action that opens the settings sheet (theme + language).
-/// Reused across screens so the entry point stays consistent.
 class OverflowMenuButton extends StatelessWidget {
   const OverflowMenuButton({super.key});
 
@@ -22,8 +20,6 @@ class OverflowMenuButton extends StatelessWidget {
 }
 
 Future<void> _showSettingsSheet(BuildContext context) {
-  // Transparent modal — the sheet paints its own background inside the
-  // AnimatedBuilder so it recolors live when the theme changes while open.
   return showModalBottomSheet<void>(
     context: context,
     backgroundColor: Colors.transparent,
@@ -39,8 +35,6 @@ class _SettingsSheet extends StatelessWidget {
     final themeManager = AppThemeManager.instance;
     final localeManager = AppLocaleManager.instance;
 
-    // Rebuild live as the user picks, so the sheet stays open and the
-    // selection highlight updates immediately.
     return AnimatedBuilder(
       animation: Listenable.merge([themeManager, localeManager]),
       builder: (context, _) {

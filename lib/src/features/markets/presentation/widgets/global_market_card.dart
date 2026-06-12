@@ -6,7 +6,6 @@ import '../../../../core/extensions/num_extensions.dart';
 import '../../../../shared_widgets/atoms/shimmer_box.dart';
 import '../../domain/entities/global_market_entity.dart';
 
-/// The market-cap / 24h-volume summary card at the top of the Markets screen.
 class GlobalMarketCard extends StatelessWidget {
   const GlobalMarketCard({super.key, required this.market});
 
@@ -68,7 +67,6 @@ class GlobalMarketCard extends StatelessWidget {
   }
 }
 
-/// Shimmer skeleton with the same chrome and layout as the loaded card.
 class GlobalMarketCardLoading extends StatelessWidget {
   const GlobalMarketCardLoading({super.key});
 
@@ -119,7 +117,6 @@ class _SkeletonCell extends StatelessWidget {
   }
 }
 
-/// Error chrome with a retry affordance.
 class GlobalMarketCardError extends StatelessWidget {
   const GlobalMarketCardError({
     super.key,

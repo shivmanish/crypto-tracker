@@ -61,7 +61,7 @@ void main() {
       final page = await source.fetchCoins(
         const CoinsParams(page: 1, pageSize: 2),
       );
-      expect(page.map((c) => c.id), ['c1', 'c2']); // rank ASC
+      expect(page.map((c) => c.id), ['c1', 'c2']);
     });
 
     test('second page offsets correctly', () async {
@@ -127,7 +127,6 @@ void main() {
         () async {
       await source.cacheCoins([coinModel(id: 'ethereum', rank: 2)]);
       await source.cacheCoinDetail(coinDetailModel(id: 'ethereum'));
-      // list refresh writes only market columns
       await source.cacheCoins([coinModel(id: 'ethereum', rank: 2)]);
 
       final d = await source.fetchCoinDetail(CoinDetailParams('ethereum'));

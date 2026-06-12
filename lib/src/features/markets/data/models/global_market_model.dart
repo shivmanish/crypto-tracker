@@ -1,7 +1,6 @@
 import '../../../../core/network/codecs.dart';
 import '../../domain/entities/global_market_entity.dart';
 
-/// Decodes the `/global` API shape and the flat local-cache shape.
 class GlobalMarketModel extends GlobalMarketEntity {
   const GlobalMarketModel({
     required super.totalMarketCapUsd,

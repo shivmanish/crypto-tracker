@@ -1,7 +1,5 @@
 import 'coin_base_entity.dart';
 
-/// A coin row in the paginated markets list — identity ([CoinBaseEntity]) plus
-/// market data.
 class CoinEntity extends CoinBaseEntity {
   const CoinEntity({
     required super.id,

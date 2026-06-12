@@ -3,8 +3,6 @@ import 'package:dartz/dartz.dart';
 import '../error/exceptions.dart';
 import '../error/failures.dart';
 
-/// Wraps repository bodies and maps typed exceptions to [Failure]s.
-/// [result] for remote calls, [localResult] for cache/db reads.
 mixin RepositoryResultHandler {
   Future<Either<Failure, T>> result<T>(Future<T> Function() callback) async {
     try {

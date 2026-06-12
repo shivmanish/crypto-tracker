@@ -6,8 +6,6 @@ import '../../../../core/usecases/usecase.dart';
 import '../entities/coin_base_entity.dart';
 import '../repository/markets_repository.dart';
 
-/// Free-text coin search via CoinGecko `/search` (identity only, no price).
-/// Online-only — a NetworkFailure surfaces the offline state.
 class SearchCoinsUseCase
     extends UseCase<List<CoinBaseEntity>, SearchCoinsParams> {
   SearchCoinsUseCase(this._repository);

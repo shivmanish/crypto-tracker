@@ -60,7 +60,7 @@ void main() {
       await c.fetchPage(page: 1);
       await c.fetchPage(page: 2);
     },
-    skip: 2, // skip the first Loading+Loaded
+    skip: 2,
     expect: () => [
       const PaginatedListLoading<CoinEntity>(isFirstFetch: false),
       isA<PaginatedListLoaded<CoinEntity>>(),
@@ -94,7 +94,7 @@ void main() {
       await c.reset();
     },
     verify: (c) {
-      expect(c.objects, hasLength(1)); // cleared then refetched one page
+      expect(c.objects, hasLength(1));
     },
   );
 }

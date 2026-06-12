@@ -1,7 +1,6 @@
 import '../../../../core/network/codecs.dart';
 import '../../domain/entities/coin_entity.dart';
 
-/// Decodes a coin from `/coins/markets` (API) and the sqflite `coins` row.
 class CoinModel extends CoinEntity {
   const CoinModel({
     required super.id,

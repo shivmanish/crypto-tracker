@@ -1,7 +1,6 @@
 import '../../../../core/network/codecs.dart';
 import '../../domain/entities/coin_base_entity.dart';
 
-/// Decodes one `coins[]` entry from `/search?query=` (identity only — no price).
 class SearchCoinModel extends CoinBaseEntity {
   const SearchCoinModel({
     required super.id,

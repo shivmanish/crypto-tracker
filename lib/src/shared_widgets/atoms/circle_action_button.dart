@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../core/extensions/context_extensions.dart';
 
-/// Shared circular app-bar action surface. The [child] is an icon or short
-/// label; [tooltip] names the action for accessibility / long-press.
 class CircleActionButton extends StatelessWidget {
   const CircleActionButton({
     super.key,

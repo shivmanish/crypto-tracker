@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Named text styles. Colors baked in for dark; light overrides below.
 @immutable
 class AppTypography extends ThemeExtension<AppTypography> {
   const AppTypography({
@@ -19,19 +18,14 @@ class AppTypography extends ThemeExtension<AppTypography> {
     required this.inputHint,
   });
 
-  /// "Markets" headline.
   final TextStyle screenTitle;
 
-  /// Centered app-bar title — "ETH · RANK #2".
   final TextStyle appBarTitle;
 
-  /// Small uppercase muted captions — "MARKET STATS", "TOP 20 · 24H".
   final TextStyle label;
 
-  /// Stat-card value — "$2.44T".
   final TextStyle statValue;
 
-  /// Detail-screen price — "$2,095.85".
   final TextStyle priceLarge;
 
   final TextStyle coinName;

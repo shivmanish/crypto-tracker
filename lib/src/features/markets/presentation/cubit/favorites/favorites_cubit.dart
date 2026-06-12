@@ -1,4 +1,3 @@
-// Private use-case field can't be a named initializing formal.
 // ignore_for_file: prefer_initializing_formals
 import '../../../../../core/cubit/base_cubit.dart';
 import '../../../../../core/usecases/usecase.dart';
@@ -6,11 +5,6 @@ import '../../../domain/usecases/get_favorite_ids_usecase.dart';
 import '../../../domain/usecases/save_favorites_usecase.dart';
 import 'favorites_state.dart';
 
-/// Owns the in-memory favorite set and mirrors it to local storage. Toggles
-/// optimistically (instant star) and reverts if persistence fails.
-///
-/// [load] runs through the base [useCase] (get); the save use case is held
-/// separately and invoked from [toggle].
 class FavoritesCubit
     extends BaseCubit<FavoritesState, Set<String>, NoParams> {
   FavoritesCubit({
@@ -43,7 +37,6 @@ class FavoritesCubit
     if (isClosed) return;
     result.fold(
       (failure) {
-        // revert the optimistic change, surface the error
         final reverted = Set<String>.from(state.ids);
         if (wasFavorite) {
           reverted.add(coinId);

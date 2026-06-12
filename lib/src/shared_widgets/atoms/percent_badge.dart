@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../core/extensions/context_extensions.dart';
 import '../../core/extensions/num_extensions.dart';
 
-/// Small tinted pill showing a signed 24h percentage, colored up/down.
 class PercentBadge extends StatelessWidget {
   const PercentBadge({
     super.key,
@@ -14,10 +13,8 @@ class PercentBadge extends StatelessWidget {
 
   final double value;
 
-  /// Tighter padding for dense rows.
   final bool compact;
 
-  /// Leading ▲/▼ direction caret (used on the detail header badge).
   final bool showArrow;
 
   @override

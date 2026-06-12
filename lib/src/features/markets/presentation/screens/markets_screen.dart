@@ -134,7 +134,6 @@ class _MarketsView extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: Divider(color: context.palette.divider),
                 ),
-                // Search active → results; otherwise the (preserved) list.
                 BlocBuilder<CoinSearchCubit, CoinSearchState>(
                   builder: (context, searchState) {
                     if (searchState is CoinSearchInactive) {

@@ -9,8 +9,6 @@ import '../../domain/usecases/get_coins_usecase.dart';
 import '../cubit/coins_list/coins_list_cubit.dart';
 import 'coin_list_tile.dart';
 
-/// Sliver-mode paginated markets list. Composes into the Markets
-/// CustomScrollView under the global/trending/search slivers.
 class CoinListView
     extends PaginatedListView<CoinEntity, CoinsParams, CoinsListCubit> {
   const CoinListView({super.key, required super.cubit, this.onCoinTap})

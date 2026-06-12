@@ -4,8 +4,6 @@ import 'package:crypto_tracker/src/features/markets/data/models/coin_model.dart'
 import 'package:crypto_tracker/src/features/markets/data/models/global_market_model.dart';
 import 'package:crypto_tracker/src/features/markets/data/models/trending_coin_model.dart';
 
-/// ---- Raw API payloads (trimmed to the fields the models read) ----
-
 JsonMap coinMarketsJson({String id = 'bitcoin'}) => {
       'id': id,
       'symbol': 'btc',
@@ -76,8 +74,6 @@ JsonMap searchJson() => {
         },
       ],
     };
-
-/// ---- Models ----
 
 CoinModel coinModel({String id = 'bitcoin', int rank = 1}) => CoinModel(
       id: id,

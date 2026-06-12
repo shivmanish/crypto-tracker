@@ -11,7 +11,6 @@ class NetworkConfig {
     'Accept': 'application/json',
   };
 
-  /// CoinGecko free tier rate-limits; retry a 429 a couple of times.
   static const int maxRetries = 2;
   static const Duration retryBackoff = Duration(seconds: 2);
 }

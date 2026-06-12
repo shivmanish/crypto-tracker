@@ -8,8 +8,6 @@ import '../cubit/coin_search/coin_search_state.dart';
 import 'coin_list_tile.dart';
 import 'search_result_tile.dart';
 
-/// Sliver that renders the search state: skeleton while loading, the result
-/// rows, a "no results" empty state, or the offline/error state with retry.
 class CoinSearchResults extends StatelessWidget {
   const CoinSearchResults({
     super.key,

@@ -8,10 +8,8 @@ class CoinSearchCubit
   CoinSearchCubit({required SearchCoinsUseCase super.useCase})
       : super(initialState: const CoinSearchInactive());
 
-  /// Search starts at this many characters (debounce happens in the search bar).
   static const int minQueryLength = 3;
 
-  /// The latest requested query — used to discard out-of-order responses.
   String _latestQuery = '';
 
   Future<void> search(String text) async {
@@ -37,6 +35,5 @@ class CoinSearchCubit
     );
   }
 
-  /// Re-run the current query (offline/error retry).
   Future<void> retry() => search(_latestQuery);
 }

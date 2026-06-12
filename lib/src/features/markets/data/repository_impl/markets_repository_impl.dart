@@ -22,8 +22,6 @@ import '../models/coin_model.dart';
 import '../models/global_market_model.dart';
 import '../models/trending_coin_model.dart';
 
-/// Network-first with cache fallback. Both sources share [MarketDataSource], so
-/// the read path simply picks one; the cache is refreshed after a live fetch.
 class MarketsRepositoryImpl
     with RepositoryResultHandler
     implements MarketsRepository {
@@ -45,10 +43,8 @@ class MarketsRepositoryImpl
       final online =
           await connectivity.currentStatus() == ConnectivityStatus.online;
 
-      // Offline → read straight from the cache (swappable via the base type).
       if (!online) return local.fetchGlobalMarket(params);
 
-      // Online → fetch fresh, refresh the cache, fall back on transient errors.
       try {
         final fresh = await remote.fetchGlobalMarket(params);
         await _cache(fresh);
@@ -91,13 +87,11 @@ class MarketsRepositoryImpl
       final online =
           await connectivity.currentStatus() == ConnectivityStatus.online;
 
-      // Offline → full detail if this coin was opened online before, else a
-      // partial from the cached list row, else a clear offline error.
       if (!online) return local.fetchCoinDetail(params);
 
       try {
         final fresh = await remote.fetchCoinDetail(params);
-        await _cacheDetail(fresh); // save onto the coin's row for offline
+        await _cacheDetail(fresh);
         return fresh;
       } on NetworkException {
         return local.fetchCoinDetail(params);
@@ -110,9 +104,7 @@ class MarketsRepositoryImpl
   Future<void> _cacheDetail(CoinDetailModel detail) async {
     try {
       await local.cacheCoinDetail(detail);
-    } catch (_) {
-      // best-effort: a cache write must not fail a good fetch
-    }
+    } catch (_) {}
   }
 
   @override
@@ -140,9 +132,7 @@ class MarketsRepositoryImpl
   Future<void> _cache(GlobalMarketModel model) async {
     try {
       await local.cacheGlobalMarket(model);
-    } catch (_) {
-      // best-effort: a cache write failure must not lose a good fetch
-    }
+    } catch (_) {}
   }
 
   @override
@@ -167,7 +157,6 @@ class MarketsRepositoryImpl
     });
   }
 
-  /// No pagination metadata from CoinGecko → a full page implies there's more.
   PaginatedResponse<CoinEntity> _toPage(
     List<CoinModel> items,
     CoinsParams params,
@@ -179,9 +168,7 @@ class MarketsRepositoryImpl
   Future<void> _cacheCoins(List<CoinModel> coins) async {
     try {
       await local.cacheCoins(coins);
-    } catch (_) {
-      // best-effort
-    }
+    } catch (_) {}
   }
 
   Future<List<CoinModel>> _cachedCoinsOr(
@@ -198,9 +185,7 @@ class MarketsRepositoryImpl
   Future<void> _cacheTrending(List<TrendingCoinModel> coins) async {
     try {
       await local.cacheTrending(coins);
-    } catch (_) {
-      // best-effort
-    }
+    } catch (_) {}
   }
 
   Future<List<TrendingCoinModel>> _cachedTrendingOr(
@@ -214,7 +199,6 @@ class MarketsRepositoryImpl
     }
   }
 
-  /// Cache fallback; if there's no cache either, surface the [original] error.
   Future<GlobalMarketModel> _cachedOr(
     GlobalMarketParams params,
     Object original,

@@ -47,8 +47,6 @@ class MockGetFavoriteIdsUseCase extends Mock
 
 class MockSaveFavoritesUseCase extends Mock implements SaveFavoritesUseCase {}
 
-/// Registers fallback values for every param type passed to mocktail `any()`.
-/// Call once from `setUpAll`.
 void registerFallbacks() {
   registerFallbackValue(const CoinsParams(page: 1, pageSize: 20));
   registerFallbackValue(GlobalMarketParams());
