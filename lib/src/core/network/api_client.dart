@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import '../error/exceptions.dart';
 import 'api_router.dart';
@@ -35,7 +36,7 @@ class DioApiClient implements ApiClient {
             BaseOptions(
               connectTimeout: NetworkConfig.connectTimeout,
               receiveTimeout: NetworkConfig.receiveTimeout,
-              sendTimeout: NetworkConfig.sendTimeout,
+              sendTimeout: kIsWeb ? null : NetworkConfig.sendTimeout,
               responseType: ResponseType.json,
               headers: NetworkConfig.commonHeaders,
             ),

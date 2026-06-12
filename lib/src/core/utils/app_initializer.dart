@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 import '../di/injector.dart';
 import '../localization/app_locale_manager.dart';
@@ -18,7 +20,7 @@ class AppInitializer {
     if (_done) return;
     final sw = Stopwatch()..start();
 
-    await _lockOrientation();
+    _configurePlatform();
 
     final LocalStorageService storage = SharedPreferencesLocalStorage(
       await SharedPreferences.getInstance(),
@@ -32,9 +34,11 @@ class AppInitializer {
     debugPrint('[init] done in ${sw.elapsed.inMilliseconds}ms');
   }
 
-  Future<void> _lockOrientation() {
-    return SystemChrome.setPreferredOrientations(
-      const [DeviceOrientation.portraitUp],
-    );
+  void _configurePlatform() {
+    if (kIsWeb) {
+      databaseFactory = databaseFactoryFfiWeb;
+      return;
+    }
+    SystemChrome.setPreferredOrientations(const [DeviceOrientation.portraitUp]);
   }
 }

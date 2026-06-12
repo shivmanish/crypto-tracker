@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +9,7 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/app_theme_manager.dart';
 import 'core/utils/app_global_keys.dart';
+import 'core/web/web_frame.dart';
 import 'features/markets/presentation/cubit/favorites/favorites_cubit.dart';
 
 class App extends StatefulWidget {
@@ -41,6 +43,16 @@ class _AppState extends State<App> {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             routerConfig: _router.config(),
             scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              scrollbars: false,
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.trackpad,
+                PointerDeviceKind.stylus,
+                PointerDeviceKind.unknown,
+              },
+            ),
             builder: (context, child) {
               final mq = MediaQuery.of(context);
               return MediaQuery(
@@ -50,7 +62,8 @@ class _AppState extends State<App> {
                     maxScaleFactor: 1.2,
                   ),
                 ),
-                child: child ?? const SizedBox.shrink(),
+                // Constrain to a phone-sized frame when running on the web.
+                child: WebFrame(child: child ?? const SizedBox.shrink()),
               );
             },
           );
