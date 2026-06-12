@@ -7,6 +7,8 @@ theme, and supports English and Hindi.
 
 Data comes from the free [CoinGecko API](https://www.coingecko.com/en/api).
 
+📹 [Demo video](https://drive.google.com/file/d/1HmVDKxghaNGnfK3HIv0uxKswqPYDqkME/view?usp=sharing) &nbsp;·&nbsp; 📦 [Download APK (v1.0.0)](https://github.com/shivmanish/crypto-tracker/releases/tag/v1.0.0)
+
 ## Features
 
 - Global market cap and 24h volume
